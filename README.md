@@ -13,4 +13,8 @@ Clone this project into your `$HOME/.config` directory for WezTerm terminal to p
 1. You can assign this to any global key.
     1. Recommend making this the same as the one in the keybinding file (default is shift + ctrl + alt + command + space).
 
+![ShowWezTerm-AutomatorScript](https://github.com/jeffcap1/wezterm-config/assets/7104326/8d86caaa-9a2c-42f8-84ed-3e8e2a4e8119)
+> Automator setup
 
+![SetWezTerm-KeyboardShortcut](https://github.com/jeffcap1/wezterm-config/assets/7104326/00d743eb-1926-4945-86b6-91ec3958877f)
+> System Settings > Keyboard > Keyboard Shortcuts
