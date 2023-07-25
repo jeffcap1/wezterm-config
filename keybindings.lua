@@ -42,6 +42,10 @@ function module.apply_to_config(config)
 
     -- Closing Window
     { key = 'w', mods = 'SUPER|SHIFT', action = act.CloseCurrentTab { confirm = true } },
+
+    -- Scrollback
+    { key = 'k', mods = 'CTRL|SHIFT', action = act.ClearScrollback 'ScrollbackOnly' },
+    { key = 'k', mods = 'SUPER', action = act.ClearScrollback 'ScrollbackAndViewport' },
   }
 end
 
