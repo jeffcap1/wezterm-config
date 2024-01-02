@@ -7,14 +7,18 @@ function module.apply_to_config(config)
   config.freetype_load_target = "Light"
   config.font = wezterm.font_with_fallback({
     {
-      family = "Cartograph CF",
+      family = "Monaspace Neon Var",
       weight = "Regular"
     },
     {
       -- Fallback font with all the Nerdfont Symbols
+      family = "JetBrainsMono Nerd Font Mono",
+    },
+    {
+      -- Extra fallback
       family = "FiraCode Nerd Font Mono",
       scale = 0.9
-    },
+    }
   })
 end
 
