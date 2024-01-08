@@ -1,4 +1,4 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- This is the module table that we will export
 local module = {}
@@ -7,8 +7,8 @@ function module.apply_to_config(config)
   config.freetype_load_target = "Light"
   config.font = wezterm.font_with_fallback({
     {
-      family = "Monaspace Neon Var",
-      weight = "Regular"
+      family = "Geist Mono Variable",
+      weight = 'Bold'
     },
     {
       -- Fallback font with all the Nerdfont Symbols
@@ -17,8 +17,8 @@ function module.apply_to_config(config)
     {
       -- Extra fallback
       family = "FiraCode Nerd Font Mono",
-      scale = 0.9
-    }
+      scale = 0.9,
+    },
   })
 end
 
