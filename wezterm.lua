@@ -1,11 +1,11 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- Import modules
-local font = require 'font'
-local keybindings = require 'keybindings'
-local settings = require 'settings'
-local theme = require 'theme'
+local font = require("font")
+local keybindings = require("keybindings")
+local settings = require("settings")
+local theme = require("theme")
 
 -- This table will hold the configuration.
 local config = {}
