@@ -7,8 +7,7 @@ function module.apply_to_config(config)
   config.freetype_load_target = "Light"
   config.font = wezterm.font_with_fallback({
     {
-      family = "Geist Mono Variable",
-      weight = 'Bold'
+      family = "Geist Mono",
     },
     {
       -- Fallback font with all the Nerdfont Symbols
