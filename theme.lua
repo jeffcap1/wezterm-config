@@ -4,7 +4,7 @@ local wezterm = require("wezterm")
 local module = {}
 
 local active_tab = {
-  bg_color = "#BC93F9",
+  bg_color = "#bc93f9",
   fg_color = "#191724",
 }
 
@@ -15,6 +15,10 @@ local inactive_tab = {
 
 function module.apply_to_config(config)
   config.color_scheme = "Catppuccin Macchiato"
+
+  -- command palette adjustments
+  config.command_palette_bg_color = "#151521"
+  config.command_palette_fg_color = "#b5b9c2"
 
   -- window adjustments
   config.window_background_opacity = 0.95
