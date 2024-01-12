@@ -5,6 +5,7 @@ local module = {}
 
 function module.apply_to_config(config)
   config.freetype_load_target = "Light"
+  config.font_size = 12.5
   config.font = wezterm.font_with_fallback({
     {
       family = "Geist Mono",
