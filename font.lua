@@ -93,7 +93,7 @@ local emoji_fonts = {
 }
 
 function module.apply_to_config(config)
-  config.font_size = 13
+  config.font_size = 12.5
   config.line_height = 1.2
 
   config.font = wezterm.font_with_fallback({
