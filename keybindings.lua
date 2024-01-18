@@ -11,6 +11,10 @@ local function split_pane(direction)
   })
 end
 
+wezterm.on("update-right-status", function(window)
+  window:set_right_status(window:active_workspace())
+end)
+
 function module.apply_to_config(config)
   config.keys = {
     -- Mimic Global Keybinding to Hide WezTerm
@@ -58,6 +62,52 @@ function module.apply_to_config(config)
     -- Scrollback
     { key = "k",          mods = "CTRL|SHIFT",           action = act.ClearScrollback("ScrollbackOnly") },
     { key = "k",          mods = "SUPER",                action = act.ClearScrollback("ScrollbackAndViewport") },
+
+    -- Window Sessions
+    -- Switch to the default workspace
+    {
+      key = "y",
+      mods = "CTRL|SHIFT",
+      action = act.SwitchToWorkspace({
+        name = "default",
+      }),
+    },
+    -- Create a new workspace with a random name and switch to it
+    { key = "i", mods = "CTRL|SHIFT", action = act.SwitchToWorkspace },
+    -- Show the launcher in fuzzy selection mode and have it list all workspaces
+    -- and allow activating one.
+    {
+      key = "9",
+      mods = "ALT",
+      action = act.ShowLauncherArgs({
+        flags = "FUZZY|WORKSPACES",
+      }),
+    },
+    -- Prompt for a name to use for a new workspace and switch to it.
+    {
+      key = "W",
+      mods = "CTRL|SHIFT",
+      action = act.PromptInputLine({
+        description = wezterm.format({
+          { Attribute = { Intensity = "Bold" } },
+          -- { Foreground = { AnsiColor = "Fuchsia" } },
+          { Text = "Enter name for new workspace" },
+        }),
+        action = wezterm.action_callback(function(window, pane, line)
+          -- line will be `nil` if they hit escape without entering anything
+          -- An empty string if they just hit enter
+          -- Or the actual line of text they wrote
+          if line then
+            window:perform_action(
+              act.SwitchToWorkspace({
+                name = line,
+              }),
+              pane
+            )
+          end
+        end),
+      }),
+    },
   }
 end
 
