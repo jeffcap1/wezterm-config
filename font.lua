@@ -5,7 +5,7 @@ local module = {}
 
 local fonts = {
   {
-    family = "Monaspace Neon Var",
+    family = "Monaspace Neon",
     harfbuzz_features = {
       "calt",
       "liga",
