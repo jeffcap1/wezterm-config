@@ -14,8 +14,8 @@ function module.apply_to_config(config)
   config.adjust_window_size_when_changing_font_size = false
   config.window_decorations = "INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
   config.integrated_title_button_style = "Windows"
-  config.initial_cols = 80
-  config.initial_rows = 25
+  config.initial_cols = 200
+  config.initial_rows = 60
   config.window_padding = {
     left = '0.75cell',
     right = '0.5cell',
