@@ -16,6 +16,7 @@ require("font").apply_to_config(config)
 require("settings").apply_to_config(config)
 require("window_settings").apply_to_config(config)
 require("theme").apply_to_config(config)
+require("background").apply_to_config(config)
 
 -- disabling keybindings for splitting windows and sessions in favor of tmux
 -- require("splits-keybindings").apply_to_config(config)
