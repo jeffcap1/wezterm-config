@@ -4,10 +4,34 @@ local module = {}
 
 local show_bg = true
 
+function get_random_bgimg()
+  local dir = wezterm.home_dir .. '/.config/wezterm/art'
+  local res = io.popen('find "' .. dir .. '" -type f') or {}
+
+  local imgs = {}
+  for file in res:lines() do
+    table.insert(imgs, file)
+  end
+
+  math.randomseed(os.time())
+  return imgs[math.random(#imgs)]
+end
+
+wezterm.on('set-random-bgimg', function(window)
+  show_bg = true
+  local img = get_random_bgimg()
+  set_background(window, img)
+end)
+
 wezterm.on('toggle-bgimg-visible', function(window)
   show_bg = not show_bg
+  local img = get_random_bgimg()
+  set_background(window, img)
+end)
 
+function set_background(window, img)
   local overrides = window:get_config_overrides() or {}
+  local bg_img = img or wezterm.home_dir .. '/.config/wezterm/art/master-sword-botw.jpg'
 
   -- The art is a bit too bright and colorful to be useful as a backdrop
   -- for text, so we're going to dim it down to 10% of its normal brightness
@@ -30,7 +54,7 @@ wezterm.on('toggle-bgimg-visible', function(window)
       -- Subsequent layers are rendered over the top of each other
       {
         source = {
-          File = wezterm.home_dir .. '/.config/wezterm/art/master-sword-botw.jpg',
+          File = bg_img,
         },
         hsb = dimmer,
         opacity = 0.5,
@@ -46,7 +70,7 @@ wezterm.on('toggle-bgimg-visible', function(window)
   end
 
   window:set_config_overrides(overrides)
-end)
+end
 
 function module.apply_to_config(config)
   wezterm.action.EmitEvent 'toggle-bgimg-visible'
@@ -58,6 +82,11 @@ function module.apply_to_config(config)
       mods = "CMD|SHIFT",
       action = wezterm.action.EmitEvent 'toggle-bgimg-visible',
     },
+    {
+      key = "r",
+      mods = "CMD|SHIFT",
+      action = wezterm.action.EmitEvent 'set-random-bgimg',
+    }
   }
 end
 
