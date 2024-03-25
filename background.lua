@@ -10,11 +10,17 @@ function get_random_bgimg()
 
   local imgs = {}
   for file in res:lines() do
+    if file:match('.DS_Store$') then
+      goto continue
+    end
     table.insert(imgs, file)
+    ::continue::
   end
 
   math.randomseed(os.time())
-  return imgs[math.random(#imgs)]
+  local img = imgs[math.random(#imgs)]
+  wezterm.log_info('Selected background image: ' .. img)
+  return img
 end
 
 wezterm.on('set-random-bgimg', function(window)
@@ -47,7 +53,7 @@ function set_background(window, img)
   }
 
   if show_bg then
-    overrides.text_background_opacity = .8
+    overrides.text_background_opacity = .9
     overrides.background = {
       -- This is the deepest/back-most layer. It will be rendered first
       base_color_bg,
