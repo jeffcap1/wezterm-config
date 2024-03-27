@@ -1,10 +1,11 @@
 local wezterm = require 'wezterm';
+local mux = wezterm.mux
 
 local module = {}
 
 local show_bg = true
 
-function get_random_bgimg()
+local function get_random_bgimg()
   local dir = wezterm.home_dir .. '/.config/wezterm/art'
   local res = io.popen('find "' .. dir .. '" -type f') or {}
 
@@ -23,19 +24,7 @@ function get_random_bgimg()
   return img
 end
 
-wezterm.on('set-random-bgimg', function(window)
-  show_bg = true
-  local img = get_random_bgimg()
-  set_background(window, img)
-end)
-
-wezterm.on('toggle-bgimg-visible', function(window)
-  show_bg = not show_bg
-  local img = get_random_bgimg()
-  set_background(window, img)
-end)
-
-function set_background(window, img)
+local function set_background(window, img)
   local overrides = window:get_config_overrides() or {}
   local bg_img = img or wezterm.home_dir .. '/.config/wezterm/art/master-sword-botw.jpg'
 
@@ -78,10 +67,19 @@ function set_background(window, img)
   window:set_config_overrides(overrides)
 end
 
-function module.apply_to_config(config)
-  wezterm.action.EmitEvent 'toggle-bgimg-visible'
+wezterm.on('set-random-bgimg', function(window)
+  show_bg = true
+  local img = get_random_bgimg()
+  set_background(window, img)
+end)
 
-  -- Allows background image to be toggled on and off
+wezterm.on('toggle-bgimg-visible', function(window)
+  show_bg = not show_bg
+  local img = get_random_bgimg()
+  set_background(window, img)
+end)
+
+function module.apply_to_config(config)
   config.keys = {
     {
       key = "b",
@@ -95,5 +93,17 @@ function module.apply_to_config(config)
     }
   }
 end
+
+wezterm.on('gui-attached', function()
+  -- maximize all displayed windows on startup and set background image
+  local workspace = mux.get_active_workspace()
+  for _, window in ipairs(mux.all_windows()) do
+    if window:get_workspace() == workspace then
+      local gui_window = window:gui_window()
+      gui_window:maximize()
+      gui_window:perform_action(wezterm.action.EmitEvent 'set-random-bgimg', window:active_pane())
+    end
+  end
+end)
 
 return module
