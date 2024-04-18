@@ -5,6 +5,22 @@ local module = {}
 
 local fonts = {
   {
+    family = "Maple Mono",
+    harfbuzz_features = {
+      "calt",
+      "liga",
+      "dlig",
+      "ss01",
+      "ss02",
+      "ss03",
+      "ss04",
+      "ss05",
+      "ss06",
+      "ss07",
+      "ss08",
+    },
+  },
+  {
     family = "Monaspace Neon",
     harfbuzz_features = {
       "calt",
@@ -93,7 +109,8 @@ local emoji_fonts = {
 }
 
 function module.apply_to_config(config)
-  config.font_size = 12.5
+  -- config.font_size = 12.5
+  config.font_size = 13
   config.line_height = 1.2
 
   config.font = wezterm.font_with_fallback({
