@@ -4,6 +4,7 @@ local mux = wezterm.mux
 local module = {}
 
 local show_bg = true
+local img = nil
 
 local function get_random_bgimg()
   local dir = wezterm.home_dir .. '/.config/wezterm/art'
@@ -69,14 +70,17 @@ end
 
 wezterm.on('set-random-bgimg', function(window)
   show_bg = true
-  local img = get_random_bgimg()
+  img = get_random_bgimg()
   set_background(window, img)
 end)
 
 wezterm.on('toggle-bgimg-visible', function(window)
-  show_bg = not show_bg
-  local img = get_random_bgimg()
-  set_background(window, img)
+  if img ~= nil then
+    show_bg = not show_bg
+    set_background(window, img)
+  else
+    wezterm.log_info('No background image is set, skipping showing image')
+  end
 end)
 
 function module.apply_to_config(config)
