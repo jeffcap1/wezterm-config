@@ -9,7 +9,6 @@ function module.apply_to_config(config)
   config.automatically_reload_config = true
   config.default_cursor_style = "BlinkingBar"
   config.disable_default_quick_select_patterns = true
-  config.disable_default_mouse_bindings = true
 end
 
 -- return our module table
