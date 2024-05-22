@@ -98,16 +98,5 @@ function module.apply_to_config(config)
   }
 end
 
-wezterm.on("gui-attached", function()
-  -- maximize all displayed windows on startup and set background image
-  local workspace = mux.get_active_workspace()
-  for _, window in ipairs(mux.all_windows()) do
-    if window:get_workspace() == workspace then
-      local gui_window = window:gui_window()
-      gui_window:maximize()
-      gui_window:perform_action(wezterm.action.EmitEvent("set-random-bgimg"), window:active_pane())
-    end
-  end
-end)
 
 return module
