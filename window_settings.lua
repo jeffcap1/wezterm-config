@@ -15,8 +15,8 @@ function module.apply_to_config(config)
 	config.adjust_window_size_when_changing_font_size = false
 	config.window_decorations = "INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 	config.integrated_title_button_style = "Windows"
-	-- config.initial_cols = 200
-	-- config.initial_rows = 50
+	config.initial_cols = 200
+	config.initial_rows = 50
 	config.window_padding = {
 		left = "0.75cell",
 		right = "0.5cell",
@@ -26,12 +26,7 @@ function module.apply_to_config(config)
 end
 
 wezterm.on("gui-startup", function(cmd)
-	local tab, pane, window = mux.spawn_window(cmd or {
-		position = { x = "5%", y = "5%" },
-		width = 200,
-		height = 50,
-	})
-
+	local tab, pane, window = mux.spawn_window(cmd or {})
 	local gui_window = window:gui_window()
 	gui_window:perform_action(wezterm.action.EmitEvent("set-random-bgimg"), window:active_pane())
 end)
