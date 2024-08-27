@@ -86,18 +86,18 @@ local fonts = {
   },
 }
 
---[[ local nerd_fonts = {
-  {
-    -- Fallback font with all the Nerdfont Symbols
-    family = "JetBrainsMono Nerd Font Mono",
-    scale = 1.25,
-  },
-  {
-    -- Extra fallback
-    family = "FiraCode Nerd Font Mono",
-    -- scale = 1.25,
-  },
-} ]]
+local nerd_fonts = {
+  --[[ {
+		-- Fallback font with all the Nerdfont Symbols
+		family = "JetBrainsMono Nerd Font Mono",
+		scale = 1.2,
+	}, ]]
+  -- {
+  -- 	-- Extra fallback
+  -- 	family = "FiraCode Nerd Font Mono",
+  -- 	scale = 1.3,
+  -- },
+}
 
 local emoji_fonts = {
   {
@@ -109,9 +109,9 @@ local emoji_fonts = {
 }
 
 function module.apply_to_config(config)
-  -- config.font_size = 12.5
   config.font_size = 13
-  config.line_height = 1.2
+  config.line_height = 1.3
+  config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
   config.font = wezterm.font_with_fallback({
     fonts[1],
