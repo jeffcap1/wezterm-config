@@ -10,6 +10,8 @@ local fonts = {
 		harfbuzz_features = {
 			"calt",
 			"liga",
+			"cv01",
+			"dlig",
 		},
 	},
 	-- Maple Mono v6
@@ -30,6 +32,19 @@ local fonts = {
 			"ss08",
 		},
 	}, ]]
+	{
+		family = "Cartograph CF",
+		harfbuzz_features = {
+			"calt",
+			"liga",
+			"dlig",
+			"ss02",
+			"ss03",
+			"ss04",
+			"ss07",
+			"ss08",
+		},
+	},
 	{
 		family = "Monaspace Neon",
 		harfbuzz_features = {
@@ -92,7 +107,22 @@ local fonts = {
 		},
 	},
 	{
-		family = "Cartograph CF",
+		family = "Cascadia Code",
+		harfbuzz_features = {
+			"calt",
+			"liga",
+			"zero",
+			"cv01",
+			"dlig",
+			"ss01",
+			"ss02",
+			"ss03",
+			"ss04",
+			"ss05",
+			"ss06",
+			"ss07",
+			"ss08",
+		},
 	},
 }
 
