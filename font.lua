@@ -127,16 +127,16 @@ local fonts = {
 }
 
 local nerd_fonts = {
-	--[[ {
+	{
 		-- Fallback font with all the Nerdfont Symbols
 		family = "JetBrainsMono Nerd Font Mono",
 		scale = 1.2,
+	},
+	--[[ {
+		-- Extra fallback
+		family = "FiraCode Nerd Font Mono",
+		scale = 1.3,
 	}, ]]
-	-- {
-	-- 	-- Extra fallback
-	-- 	family = "FiraCode Nerd Font Mono",
-	-- 	scale = 1.3,
-	-- },
 }
 
 local emoji_fonts = {
@@ -158,7 +158,7 @@ function module.apply_to_config(config)
 		fonts[2],
 		fonts[3],
 		fonts[4],
-		-- nerd_fonts[1],
+		nerd_fonts[1],
 		-- nerd_fonts[2],
 		emoji_fonts[1],
 		emoji_fonts[2],
