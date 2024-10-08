@@ -130,7 +130,7 @@ local nerd_fonts = {
 	{
 		-- Fallback font with all the Nerdfont Symbols
 		family = "JetBrainsMono Nerd Font Mono",
-		scale = 1.2,
+		scale = 1.4,
 	},
 	--[[ {
 		-- Extra fallback
