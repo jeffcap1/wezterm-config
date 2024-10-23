@@ -5,13 +5,12 @@ local module = {}
 
 local fonts = {
 	-- Maple Mono v7 - variable font settings
+	-- @see https://github.com/subframe7536/maple-font/blob/variable/source/features/README.md
 	{
 		family = "Maple Mono",
 		harfbuzz_features = {
-			"calt",
 			"liga",
 			"cv01",
-			"dlig",
 		},
 	},
 	-- Maple Mono v6
