@@ -20,8 +20,8 @@ function module.apply_to_config(config)
 	config.window_padding = {
 		left = "0.75cell",
 		right = "0.5cell",
-		top = "0.25cell",
-		bottom = 0,
+		top = "0.5cell",
+		bottom = "0.5cell",
 	}
 end
 

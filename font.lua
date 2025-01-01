@@ -149,7 +149,7 @@ local emoji_fonts = {
 
 function module.apply_to_config(config)
 	config.font_size = 13
-	config.line_height = 1.3
+	config.line_height = 1.15
 	config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
 	config.font = wezterm.font_with_fallback({
